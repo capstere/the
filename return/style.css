@@ -27,7 +27,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   /* Bakgrund med JPEG, centrerad, täcker hela skärmen och är fixed */
-  background: url('return/images/stars.jpeg') no-repeat center center fixed;
+  background: url ("return/images/stars.jpeg") no-repeat center center fixed;
   background-size: cover;
   color: white;
   overflow: hidden;
