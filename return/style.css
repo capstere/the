@@ -25,9 +25,11 @@
 body {
   margin: 0;
   padding: 0;
-  background: black;
-  color: white;
   font-family: Arial, sans-serif;
+  /* Bakgrund med JPEG, centrerad, täcker hela skärmen och är fixed */
+  background: url('return/images/stars.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
   overflow: hidden;
 }
 
@@ -182,8 +184,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'subset-StarJediRounded', sans-serif;
-  font-size: 3rem;
+  font-size: 4rem; /* Öka storleken för extra intryck */
   color: var(--main-title-color);
+  text-shadow: 2px 2px 8px rgba(255, 232, 31, 0.8), 0 0 20px rgba(255, 232, 31, 1);
   z-index: 1050;
   animation: fadeIn var(--final-fade-duration) ease-out forwards;
 }
@@ -200,20 +203,20 @@ body {
 }
 #buttons .btn {
   font-family: 'subset-StarJediRounded', sans-serif;
-  font-size: 1.2em;
-  padding: 10px 20px;
-  margin: 5px;
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 5px;
+  font-size: 1.5em; /* Öka storleken lite */
+  padding: 12px 24px;
+  margin: 8px;
+  background: linear-gradient(145deg, #ffe81f, #ffd700); /* En gradient för en mer lyxig känsla */
+  color: black;
+  border: 2px solid black;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background 0.2s;
 }
 #buttons .btn:hover {
   transform: scale(1.1);
-  background: white;
-  box-shadow: 0 0 10px rgba(255, 232, 31, 0.8);
+  background: linear-gradient(145deg, #ffd700, #ffe81f);
+  box-shadow: 0 0 15px rgba(255, 232, 31, 0.9);
 }
 @keyframes fadeIn {
   from { opacity: 0; }
