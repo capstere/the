@@ -1,59 +1,89 @@
-Till att börja med har jag problem med dessa DAX-mått som behöver åtgärdas:
+**Ja — här behövs en syntaxrättning av variabelnamnen, inte någon ändring av KPI-beräkningarna.** Jag missade detta i min tidigare kodgranskning.
 
-Monthly Review Cell
+Ersätt **hela definitionen av respektive befintligt mått** i Power BI:s formelfält med koden nedan, inklusive raden med måttnamnet.
 
-The syntax for 'Status' is incorrect.
+## 1. `Monthly Review Cell`
 
-(VAR Metric =
-SELECTEDVALUE ( DimMetric[MetricID] )
+Här ersätter jag bland annat variabeln `Status`, som parsern pekar ut, med `__StatusText`. Referensen till måttet `[Monthly Review Status]` ska vara kvar.
 
-VAR result =
-[Monthly Review Result]
+```dax
+Monthly Review Cell =
+VAR __MetricID =
+    SELECTEDVALUE ( DimMetric[MetricID] )
 
-VAR Status =
-[Monthly Review Status]
+VAR __ResultValue =
+    [Monthly Review Result]
 
-VAR UnitValue =
-SWITCH ( TRUE (),
-    ISBLANK ( Result ), "--",
-    Metric = "EHS_CHECKLIST", FORMAT ( Result, "0.0" ) & " avg score",
-    Metric = "D_WIP_10H", FORMAT ( Result, "0.0" ) & " avg lots",
-    Metric = "Q_NRFT", FORMAT ( Result, "0.0%" ) & " NRFT-free",
-    Metric = "D_OVER_20H", FORMAT ( Result, "0.0%" ) & " within 20h",
-    Metric = "Q_LFI_CLOSED", FORMAT ( Result, "0" ) & " closed",
-    FORMAT ( Result, "0" ) & " events"
-)
+VAR __StatusText =
+    [Monthly Review Status]
 
-RETURN
-IF (
-    HASONEVALUE ( DimMetric[MetricID] ) &&
-    HASONEVALUE ( 'Monthly Review Period'[FiscalYearMonth] ) &&
-    [Monthly Review Period Visible] = 1,
-    UnitValue & ", " & Status &
-        UNICHAR ( 10 ) & [Monthly Review Coverage] &
-        UNICHAR ( 10 ) & [Monthly Review Period Context]
-))
-
-
-Detail Period Context
-
-The syntax for 'FirstDate' is incorrect.
-
-(VAR Period =
-SELECTEDVALUE ( DimDate[FiscalYearMonth], "Selected dates" )
-
-VAR FirstDate =
-MIN ( DimDate[RefDate] )
-
-VAR LastDate =
-MAX ( DimDate[RefDate] )
+VAR __UnitValue =
+    SWITCH (
+        TRUE (),
+        ISBLANK ( __ResultValue ),
+            "--",
+        __MetricID = "EHS_CHECKLIST",
+            FORMAT ( __ResultValue, "0.0" ) & " avg score",
+        __MetricID = "D_WIP_10H",
+            FORMAT ( __ResultValue, "0.0" ) & " avg lots",
+        __MetricID = "Q_NRFT",
+            FORMAT ( __ResultValue, "0.0%" ) & " NRFT-free",
+        __MetricID = "D_OVER_20H",
+            FORMAT ( __ResultValue, "0.0%" ) & " within 20h",
+        __MetricID = "Q_LFI_CLOSED",
+            FORMAT ( __ResultValue, "0" ) & " closed",
+        FORMAT ( __ResultValue, "0" ) & " events"
+    )
 
 RETURN
-IF (
-    ISBLANK ( FirstDate ),
-    "No reporting dates selected",
-    Period & " | " &
-    FORMAT ( FirstDate, "dd MMM yyyy" ) &
-    " – " &
-    FORMAT ( LastDate, "dd MMM yyyy" )
-))
+    IF (
+        HASONEVALUE ( DimMetric[MetricID] )
+            && HASONEVALUE ( 'Monthly Review Period'[FiscalYearMonth] )
+            && [Monthly Review Period Visible] = 1,
+        __UnitValue
+            & ", "
+            & __StatusText
+            & UNICHAR ( 10 )
+            & [Monthly Review Coverage]
+            & UNICHAR ( 10 )
+            & [Monthly Review Period Context]
+    )
+```
+
+## 2. `Detail Period Context`
+
+Här byter jag **både `FirstDate` och `LastDate`**. Namnen sammanfaller med de inbyggda DAX-funktionerna `FIRSTDATE` och `LASTDATE`, så vi undviker dem som variabelnamn. :chatgpt-content-reference{index="0"}
+
+```dax
+Detail Period Context =
+VAR __PeriodLabel =
+    SELECTEDVALUE (
+        DimDate[FiscalYearMonth],
+        "Selected dates"
+    )
+
+VAR __PeriodStartDate =
+    MIN ( DimDate[RefDate] )
+
+VAR __PeriodEndDate =
+    MAX ( DimDate[RefDate] )
+
+RETURN
+    IF (
+        ISBLANK ( __PeriodStartDate ),
+        "No reporting dates selected",
+        __PeriodLabel
+            & " | "
+            & FORMAT ( __PeriodStartDate, "dd MMM yyyy" )
+            & " – "
+            & FORMAT ( __PeriodEndDate, "dd MMM yyyy" )
+    )
+```
+
+### Vad rättningen ändrar
+
+**Endast de lokala variabelnamnen har ändrats jämfört med dina inklistrade uttryck.** Måttnamn, måttreferenser, filtervillkor, enheter och resultatpresentation är bevarade.
+
+Prefixet `__` är uttryckligen tillåtet för DAX-variabler och är ett bra sätt att undvika sådana namnkollisioner. Microsoft anger också att reserverade ord och befintliga tabellnamn inte får användas som variabelnamn. :chatgpt-content-reference{index="1"}
+
+Jag har inte kört uttrycken i din DAX-motor eller ändrat repot i denna omgång. **Samma rättningar behöver föras tillbaka till `_Measures.tmdl`**, så att nästa Codex-version inte återinför felen. Dessa två fynd ska även ingå i nästa syntaxkontroll av de nya måtten.
