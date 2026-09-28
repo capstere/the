@@ -1,3 +1,16 @@
+
+Nya resultat uppladdade:
+2026-09-28__XPERT-MTB-RIF-ULTRA__1120055__R01
+2026-09-28__XPERT-CT-NG__1120031__R01
+Ny version av HIV:
+2026-09-28__XPERT-HIV-1-VIRAL-LOAD-XC__1119848__R03
+
+Loggfiler på den vanliga platsen.
+
+
+
+
+
 Old-School-Control-Material-Update/Export-KontrollmaterialTillPowerApp.ps1
 Får detta fel:
 
