@@ -1,3 +1,24 @@
+
+Gå igenom denna fil:
+IPTCMPL/06_Snowflake/95_ACCESS/Snowflake_LOGIN_HISTORY.csv
+
+Det finns ett mönster på att jag förlorar anslutning på dagarna, medan på mogronen fungerar det.
+Jag har nu satt Refresh för "07_PowerBI_BMRAM" PBI rapporten till refresh 01:00 och 07:00.
+Samtidigt har jag ändrat mitt power automate flöde för "BMRAM Equipment Current Snapshot" till att köra 02:00 och 08:00 dagligen.
+
+Vad anser du?
+
+
+
+
+
+
+
+
+
+
+
+
 **Ja — här behövs en syntaxrättning av variabelnamnen, inte någon ändring av KPI-beräkningarna.** Jag missade detta i min tidigare kodgranskning.
 
 Ersätt **hela definitionen av respektive befintligt mått** i Power BI:s formelfält med koden nedan, inklusive raden med måttnamnet.
