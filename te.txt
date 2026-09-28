@@ -1,0 +1,59 @@
+Till att börja med har jag problem med dessa DAX-mått som behöver åtgärdas:
+
+Monthly Review Cell
+
+The syntax for 'Status' is incorrect.
+
+(VAR Metric =
+SELECTEDVALUE ( DimMetric[MetricID] )
+
+VAR result =
+[Monthly Review Result]
+
+VAR Status =
+[Monthly Review Status]
+
+VAR UnitValue =
+SWITCH ( TRUE (),
+    ISBLANK ( Result ), "--",
+    Metric = "EHS_CHECKLIST", FORMAT ( Result, "0.0" ) & " avg score",
+    Metric = "D_WIP_10H", FORMAT ( Result, "0.0" ) & " avg lots",
+    Metric = "Q_NRFT", FORMAT ( Result, "0.0%" ) & " NRFT-free",
+    Metric = "D_OVER_20H", FORMAT ( Result, "0.0%" ) & " within 20h",
+    Metric = "Q_LFI_CLOSED", FORMAT ( Result, "0" ) & " closed",
+    FORMAT ( Result, "0" ) & " events"
+)
+
+RETURN
+IF (
+    HASONEVALUE ( DimMetric[MetricID] ) &&
+    HASONEVALUE ( 'Monthly Review Period'[FiscalYearMonth] ) &&
+    [Monthly Review Period Visible] = 1,
+    UnitValue & ", " & Status &
+        UNICHAR ( 10 ) & [Monthly Review Coverage] &
+        UNICHAR ( 10 ) & [Monthly Review Period Context]
+))
+
+
+Detail Period Context
+
+The syntax for 'FirstDate' is incorrect.
+
+(VAR Period =
+SELECTEDVALUE ( DimDate[FiscalYearMonth], "Selected dates" )
+
+VAR FirstDate =
+MIN ( DimDate[RefDate] )
+
+VAR LastDate =
+MAX ( DimDate[RefDate] )
+
+RETURN
+IF (
+    ISBLANK ( FirstDate ),
+    "No reporting dates selected",
+    Period & " | " &
+    FORMAT ( FirstDate, "dd MMM yyyy" ) &
+    " – " &
+    FORMAT ( LastDate, "dd MMM yyyy" )
+))
