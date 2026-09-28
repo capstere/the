@@ -1,3 +1,11 @@
+Laddat upp 16.
+
+Även laddat upp dessa filer:
+Cepheid _ Production orders Rejected.xlsx
+Cepheid _ Production orders.csv
+OBS: De är ifyllda för hand så batcherna ger oss en indikation på vad vi kan söka efter för att se mönster!
+
+
 Jag tror det fungerade nu.
 Appen säger detta efter import:
 
