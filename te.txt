@@ -1,3 +1,54 @@
+Old-School-Control-Material-Update/Export-KontrollmaterialTillPowerApp.ps1
+Får detta fel:
+
+At N:\QC\QC-1\IPT\8. IPT - WR + Rework\1. PQC - Kontrollprovsfil - RÖR EJ -\Script Raw Data\Export-KontrollmaterialTillPowerApp.ps1:2 char:1
++ [CmdletBinding()]
++ ~~~~~~~~~~~~~~~~~
+Unexpected attribute 'CmdletBinding'.
+At N:\QC\QC-1\IPT\8. IPT - WR + Rework\1. PQC - Kontrollprovsfil - RÖR EJ -\Script Raw Data\Export-KontrollmaterialTillPowerApp.ps1:3 char:1
++ param(
++ ~~~~~
+Unexpected token 'param' in expression or statement.
+At N:\QC\QC-1\IPT\8. IPT - WR + Rework\1. PQC - Kontrollprovsfil - RÖR EJ -\Script Raw Data\Export-KontrollmaterialTillPowerApp.ps1:4 char:25
++ ... $LogPath = (Join-Path $PSScriptRoot 'UpdateLog_Kontrollprovsfil.csv') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The assignment expression is not valid. The input to an assignment operator must be an object that is able to accept assignments, such as a variable or a 
+property.
+At N:\QC\QC-1\IPT\8. IPT - WR + Rework\1. PQC - Kontrollprovsfil - RÖR EJ -\Script Raw Data\Export-KontrollmaterialTillPowerApp.ps1:5 char:21
++     [string]$From = '',
++                     ~~
+The assignment expression is not valid. The input to an assignment operator must be an object that is able to accept assignments, such as a variable or a 
+property.
+At N:\QC\QC-1\IPT\8. IPT - WR + Rework\1. PQC - Kontrollprovsfil - RÖR EJ -\Script Raw Data\Export-KontrollmaterialTillPowerApp.ps1:6 char:19
++     [string]$PN = '',
++                   ~~
+The assignment expression is not valid. The input to an assignment operator must be an object that is able to accept assignments, such as a variable or a 
+property.
+At N:\QC\QC-1\IPT\8. IPT - WR + Rework\1. PQC - Kontrollprovsfil - RÖR EJ -\Script Raw Data\Export-KontrollmaterialTillPowerApp.ps1:7 char:32
++     [string]$OutputDirectory = '',
++                                ~~
+The assignment expression is not valid. The input to an assignment operator must be an object that is able to accept assignments, such as a variable or a 
+property.
+At N:\QC\QC-1\IPT\8. IPT - WR + Rework\1. PQC - Kontrollprovsfil - RÖR EJ -\Script Raw Data\Export-KontrollmaterialTillPowerApp.ps1:8 char:44
++     [ValidateRange(1,50)][int]$BatchSize = 50,
++                                            ~~
+The assignment expression is not valid. The input to an assignment operator must be an object that is able to accept assignments, such as a variable or a 
+property.
+At N:\QC\QC-1\IPT\8. IPT - WR + Rework\1. PQC - Kontrollprovsfil - RÖR EJ -\Script Raw Data\Export-KontrollmaterialTillPowerApp.ps1:9 char:25
++     [string]$SourceId = 'Kontrollprovsfil-Solna-v1',
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The assignment expression is not valid. The input to an assignment operator must be an object that is able to accept assignments, such as a variable or a 
+property.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedAttribute
+
+
+
+
+
+
+
+
 
 Gå igenom denna fil:
 IPTCMPL/06_Snowflake/95_ACCESS/Snowflake_LOGIN_HISTORY.csv
