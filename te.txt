@@ -1,3 +1,32 @@
+Det gick enda fram till jag skulle importera: då kom detta:
+
+Stopp — STOPP vid 525-00366: Network error when using Patch function: [CM_Transactions] Field 'field_10' is required.
+
+jsonfil-text:
+{"SchemaVersion":1,"Source":"Kontrollprovsfil.LegacyCSV","SourceId":"Kontrollprovsfil-Solna-v1","ExportedAtUtc":"2026-09-28T18:11:37.3731268Z","FromLocal":"2026-09-25","EventCount":4,"Events":[{"Seq":344,"EventId":"a976995e9e43890e3667dbcf087d7aee7de1a2d42d8b09e791287495bbcb4867-1","Action":"QTY","PN":"525-00366","LegacyRow":"123","LegacyTime":"2026-09-25 15:25:44","OccurredAtUtc":"2026-09-25T13:25:44Z","CheckedDate":"2026-09-25","LegacyUser":"labuser_ipt","Signature":"vdao","Machine":"CEPSNADTLAB1815","OldLot":"080526ARMO","OldExpiry":"2026-09-17","OldExpiryRaw":"2026-09-17","OldQty":26,"OldQtyText":"26 rör","OldVariantHint":"","NewLot":"080526ARMO","NewExpiry":"2026-09-17","NewExpiryRaw":"2026-09-17","NewQty":24,"NewQtyText":"24","NewVariantHint":""},{"Seq":345,"EventId":"8d854664645c066c241e715b58358ba4b93453ff8101ce386ff8d6d632fe4138-1","Action":"OVERWRITE","PN":"525-00366","LegacyRow":"123","LegacyTime":"2026-09-25 15:43:40","OccurredAtUtc":"2026-09-25T13:43:40Z","CheckedDate":"2026-09-25","LegacyUser":"vivian.dao","Signature":"vdao","Machine":"CEPSNALPSTD0544","OldLot":"080526ARMO","OldExpiry":"2026-09-17","OldExpiryRaw":"2026-09-17","OldQty":24,"OldQtyText":"24","OldVariantHint":"","NewLot":"080526ARMO","NewExpiry":"2026-10-04","NewExpiryRaw":"2026-10-04","NewQty":24,"NewQtyText":"24 rör","NewVariantHint":""},{"Seq":346,"EventId":"bacfa36132764cf5303312dbe11866f670318864093975bda4623ccdb885b12c-1","Action":"QTY","PN":"525-00366","LegacyRow":"122","LegacyTime":"2026-09-25 15:44:17","OccurredAtUtc":"2026-09-25T13:44:17Z","CheckedDate":"2026-09-25","LegacyUser":"vivian.dao","Signature":"vdao","Machine":"CEPSNALPSTD0544","OldLot":"073126MMM","OldExpiry":"2026-09-30","OldExpiryRaw":"2026-09-30","OldQty":4,"OldQtyText":"4 rör","OldVariantHint":"","NewLot":"073126MMM","NewExpiry":"2026-09-30","NewExpiryRaw":"2026-09-30","NewQty":0,"NewQtyText":"0","NewVariantHint":""},{"Seq":347,"EventId":"a0d68e4d6a188eef8142f4d4b4923bf2e536581691982c5da94b5e035316879a-1","Action":"OVERWRITE","PN":"525-00033","LegacyRow":"142","LegacyTime":"2026-09-27 01:22:03","OccurredAtUtc":"2026-09-26T23:22:03Z","CheckedDate":"2026-09-27","LegacyUser":"labuser_ipt","Signature":"RAAS","Machine":"CEPSNADTSTD6692","OldLot":"062326MMM","OldExpiry":"2027-06-23","OldExpiryRaw":"2027-06-23","OldQty":1,"OldQtyText":"1 låda","OldVariantHint":"","NewLot":"111825ARMO","NewExpiry":"2026-11-18","NewExpiryRaw":"2026-11-18","NewQty":2,"NewQtyText":"2 lådor","NewVariantHint":""}]}
+
+Hur appen mottog json:
+
+2026-09-25 15:25:44 | 525-00366 | QTY | STD
+Före: 080526ARMO / 26 rör / 2026-09-17
+Efter: 080526ARMO / 24 / 2026-09-17
+Överhoppad — Power Appen har nyare data än legacy-händelsen. Appens värde behålls.
+2026-09-25 15:43:40 | 525-00366 | OVERWRITE | STD
+Före: 080526ARMO / 24 / 2026-09-17
+Efter: 080526ARMO / 24 rör / 2026-10-04
+Överhoppad — Power Appen har nyare data än legacy-händelsen. Appens värde behålls.
+2026-09-25 15:44:17 | 525-00366 | QTY | STD
+Före: 073126MMM / 4 rör / 2026-09-30
+Efter: 073126MMM / 0 / 2026-09-30
+Stopp — STOPP vid 525-00366: Network error when using Patch function: [CM_Transactions] Field 'field_10' is required.
+2026-09-27 01:22:03 | 525-00033 | OVERWRITE | STD
+Före: 062326MMM / 1 låda / 2027-06-23
+Efter: 111825ARMO / 2 lådor / 2026-11-18
+Överhoppad — Målloten finns redan aktiv. Ingen dublett skapas.
+
+
+
+
 
 Nya resultat uppladdade:
 2026-09-28__XPERT-MTB-RIF-ULTRA__1120055__R01
