@@ -1,3 +1,29 @@
+Jag tror det fungerade nu.
+Appen säger detta efter import:
+
+2026-09-25 15:25:44 | 525-00366 | QTY | STD
+Före: 080526ARMO / 26 rör / 2026-09-17
+Efter: 080526ARMO / 24 / 2026-09-17
+Överhoppad — Power Appen har nyare data än legacy-händelsen. Appens värde behålls.
+2026-09-25 15:43:40 | 525-00366 | OVERWRITE | STD
+Före: 080526ARMO / 24 / 2026-09-17
+Efter: 080526ARMO / 24 rör / 2026-10-04
+Överhoppad — Power Appen har nyare data än legacy-händelsen. Appens värde behålls.
+2026-09-25 15:44:17 | 525-00366 | QTY | STD
+Före: 073126MMM / 4 rör / 2026-09-30
+Efter: 073126MMM / 0 / 2026-09-30
+Importerad — Tidigare lot-skrivning hittad; endast historik behandlas.
+2026-09-27 01:22:03 | 525-00033 | OVERWRITE | STD
+Före: 062326MMM / 1 låda / 2027-06-23
+Efter: 111825ARMO / 2 lådor / 2026-11-18
+Överhoppad — Målloten finns redan aktiv. Ingen dublett skapas.
+
+
+
+
+
+
+
 Det gick enda fram till jag skulle importera: då kom detta:
 
 Stopp — STOPP vid 525-00366: Network error when using Patch function: [CM_Transactions] Field 'field_10' is required.
