@@ -1,3 +1,26 @@
+
+Tjena Carl!
+
+Jag har några frågor om framtiden för datan bakom "Solna Quality Report"
+
+Jag håller på att skapa en IPT QDIP PBI + Power Apps för viss input.
+Jag använder en del av den semantiska modellen "Solna Quality Report", tabellerna:
+Active Production Orders
+Historical Production Orders
+
+I och med sharepoint retirement ska källorna "bara" bytas ut från Sharepoint till sql eller kommer mycket ändras för själva frontend? alltså där jag ansluter för att använda data?
+
+
+
+
+Jag funderar även på vad som krävs för en "stabil" koppling melllan PBI och Snowflake?
+
+
+
+
+
+
+
 Jag skulle säga PASS på allt nu.
 Däremot så när man söker på LSP så tar skriptet med mappen med GX files som val, vilket det inte gjorde förut. Det vill jag inte ska hända. "2026 09 20 GXMTB RIF ULTRA #66512 GX files". Se bifogad bild.
 
