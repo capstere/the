@@ -1,3 +1,22 @@
+Jag skulle säga PASS på allt nu.
+Däremot så när man söker på LSP så tar skriptet med mappen med GX files som val, vilket det inte gjorde förut. Det vill jag inte ska hända. "2026 09 20 GXMTB RIF ULTRA #66512 GX files". Se bifogad bild.
+
+Granska uppladdade filer mot testerna som jag utfört:
+2026-09-30__XPERT-MTB-RIF-ULTRA__1119826__R01
+build_audit.csv
+jesper.fredriksson_audit_20260930_151856.csv
+jesper.fredriksson_20260930_152257.jsonl
+jesper.fredriksson_20260930_152257.txt
+jesper.fredriksson_20260930_151154.jsonl
+jesper.fredriksson_20260930_151154.txt
+
+
+Välj LSP-mapp
+Flera mappar matchar LSP 66512. Välj vilken källa som ska användas:
+\\SE.CEPHEID.PRI\Cepheid Sweden\QC\QC-1\IPT\Skiftspecifika dokument\PQC analyst\JESPER\Scripts\Tests\R9 - GXMTB RIF ULTRA #66512 - PQC (28,800) OBR
+\\SE.CEPHEID.PRI\Cepheid Sweden\QC\QC-1\IPT\Skiftspecifika dokument\PQC analyst\JESPER\Scripts\Tests\R9 - GXMTB RIF ULTRA #66512 - PQC (28,800) OBR\2026 09 20 GXMTB RIF ULTRA #66512 GX files
+
+
 Kört 
 
 2026-09-29__XPERT-CT-NG_1119692_R01
