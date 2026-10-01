@@ -1,3 +1,11 @@
+Återigen laddat upp min nya:
+07_PowerBI_BMRAM
+
+Lagt till i troubleshoot:
+Resultat från sql 11 
+Nya power autmate flödet 
+
+
 Jag har laddat upp "Troubleshoot" i repot.
 Den innehåller:
 01_UPCOMING_PRE_ROBAL.csv
