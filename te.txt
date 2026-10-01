@@ -1,3 +1,28 @@
+Jag har fått svar från vår Data Analyst nu! 
+
+Jag skrev ju detta:
+"Tjena Carl!
+Jag har några frågor om framtiden för datan bakom Solna Quality Report.
+ 
+Jag håller på att bygga en IPT QDIP i Power BI + Power Apps och använder delar av den semantiska modellen, framför allt tabellerna Active Production Orders och Historical Production Orders.
+ 
+I och med SharePoint-retirementen är tanken i princip att ni byter backend från sharepoint till SQL men behåller den semantiska modellen ungefär som idag?
+ 
+Alltså, kommer jag kunna fortsätta ansluta till Solna Quality Report och använda samma tabeller/fält, eller räknar ni med större förändringar även där?
+ 
+Frågar mest så jag vet hur mycket jag vågar bygga vidare på nu 😅"
+
+Han svarade:
+"Tjo Jesper. Tanken är att jag ska uppdatera den när datan finns tillgänglig från dess andra källor. Målet är att alla kolumner som finns i den idag ska finnas då också.
+Det kan bli förändringar, men jag ska försöka att låta alla fält/tabeller ha samma namn så det bör inte påverka dig i stor grad. Jag informerar dig om jag behöver ändra på saker!
+ 
+Alternativt så avvaktar du tills v.45 ~ då vi vet mer exakt
+ 
+Historical Production Orders kommer stanna - all gammal sharepoint data kommer finnas kvar, men Active Production Orders lär uppdateras en del"
+ 
+
+
+
 
 Kör dessa 4:
 
