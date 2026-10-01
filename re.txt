@@ -1,0 +1,8 @@
+Du borde redan ha access till att göra SQL connections tror jag, har du prövat?
+Annars kan jag skapa dem åt er i eran app också. 
+ 
+Jag hörde från Noah att du kontaktat IT, när det gäller PowerAutomate har inte jag heller premium och tror ingen har det så där är det nog via data.
+ 
+All rådata från snowflake/MES_SAP landar inte men en hel del men det plockas från en rapport så vet inte hur många dagar fram det är som vi plockar
+ 
+och ja snowflake i dagsläget går bara att koppla till powerbi  / excel filer direkt inte till powerapps tyvärr
