@@ -1,8 +1,45 @@
-Du borde redan ha access till att göra SQL connections tror jag, har du prövat?
-Annars kan jag skapa dem åt er i eran app också. 
- 
-Jag hörde från Noah att du kontaktat IT, när det gäller PowerAutomate har inte jag heller premium och tror ingen har det så där är det nog via data.
- 
-All rådata från snowflake/MES_SAP landar inte men en hel del men det plockas från en rapport så vet inte hur många dagar fram det är som vi plockar
- 
-och ja snowflake i dagsläget går bara att koppla till powerbi  / excel filer direkt inte till powerapps tyvärr
+Spännande.. Jag fick alla dessa error när jag skulle köra flower...
+
+
+
+'item/OrderNumber' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/FgBatch' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/MaterialNumber' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/LspNumber' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/CurrentRobal' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/CurrentRobalSource' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SAPRobal' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/BYRobal' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/PlannedStart' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/PlannedFinish' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/PlanSource' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/PlanSnapshotAt' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/MESLotCreatedAt' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/MESLotResource' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/UpcomingStage' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/AutoMappReadiness' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/FlowState' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/FGExpDate' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/ProductionVersion' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SAPTotalOrderQty' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/CartridgePackSize' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/CartridgeQuantity' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/CartridgeQtyStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SampleReagentCount' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SampleReagentPNs' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SampleReagentLots' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SampleReagentLotsExtended' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SampleReagentCepheidIDs' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SampleReagentExpiries' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SampleReagentStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SampleReagentAllocationStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SampleReagentDetails' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/LegacyOBRMatchStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/KundSrPN' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/OBRRuleStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/OBRRequired' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/OBRFolderSuffix' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SourceSystem' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SourceRefreshedAtUTC' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SyncRunID' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+'item/SnapshotSyncedAtUTC' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
