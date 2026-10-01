@@ -1,0 +1,2 @@
+key,value,default,level,description,type
+NETWORK_POLICY,CEPHEID_NETWORK_POLICY,,ACCOUNT,Network policy assigned for the given target.,STRING
