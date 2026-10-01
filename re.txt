@@ -1,45 +1,42 @@
-Spännande.. Jag fick alla dessa error när jag skulle köra flower...
-
-
-
-'item/OrderNumber' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/FgBatch' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/MaterialNumber' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/LspNumber' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/CurrentRobal' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/CurrentRobalSource' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SAPRobal' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/BYRobal' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/PlannedStart' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/PlannedFinish' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/PlanSource' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/PlanSnapshotAt' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/MESLotCreatedAt' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/MESLotResource' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/UpcomingStage' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/AutoMappReadiness' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/FlowState' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/FGExpDate' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/ProductionVersion' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SAPTotalOrderQty' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/CartridgePackSize' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/CartridgeQuantity' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/CartridgeQtyStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SampleReagentCount' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SampleReagentPNs' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SampleReagentLots' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SampleReagentLotsExtended' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SampleReagentCepheidIDs' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SampleReagentExpiries' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SampleReagentStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SampleReagentAllocationStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SampleReagentDetails' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/LegacyOBRMatchStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/KundSrPN' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/OBRRuleStatus' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/OBRRequired' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/OBRFolderSuffix' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SourceSystem' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SourceRefreshedAtUTC' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SyncRunID' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
-'item/SnapshotSyncedAtUTC' is no longer present in the operation schema. It should be removed before the workflow is re-saved.
+LotKey                         -> Title
+OrderNumber                    -> field_1
+FgBatch                        -> field_2
+MaterialNumber                 -> field_3
+LspNumber                      -> field_4
+CurrentRobal                   -> field_5
+CurrentRobalSource             -> field_6
+SAPRobal                       -> field_7
+BYRobal                        -> field_8
+PlannedStart                   -> field_9
+PlannedFinish                  -> field_10
+PlanSource                     -> field_11
+PlanSnapshotAt                 -> field_12
+MESLotCreatedAt                -> field_13
+MESLotResource                 -> field_14
+UpcomingStage                  -> field_15
+AutoMappReadiness              -> field_16
+FlowState                      -> field_17
+FGExpDate                      -> field_18
+ProductionVersion              -> field_19
+SAPTotalOrderQty               -> field_20
+CartridgePackSize              -> field_21
+CartridgeQuantity              -> field_22
+CartridgeQtyStatus             -> field_23
+SampleReagentCount             -> field_24
+SampleReagentPNs               -> field_25
+SampleReagentLots              -> field_26
+SampleReagentLotsExtended      -> field_27
+SampleReagentCepheidIDs        -> field_28
+SampleReagentExpiries          -> field_29
+SampleReagentStatus            -> field_30
+SampleReagentAllocationStatus  -> field_31
+SampleReagentDetails           -> field_32
+LegacyOBRMatchStatus           -> field_33
+KundSrPN                       -> field_34
+OBRRuleStatus                  -> field_35
+OBRRequired                    -> field_36
+OBRFolderSuffix                -> field_37
+SourceSystem                   -> field_38
+SourceRefreshedAtUTC           -> field_39
+SyncRunID                      -> field_40
+SnapshotSyncedAtUTC            -> field_41
