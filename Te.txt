@@ -18,3 +18,164 @@ let
 
 in
     Data
+
+
+
+
+
+
+Absolut. Här är en ren QDIP-query för IPT_UpcomingCurrent som:
+
+* använder den äldre SharePoint-metoden
+* pekar på den aktiva listans GUID
+* behåller bara de 28 aktiva V2-fälten
+* döper om field_1 osv till begripliga namn
+* sätter rimliga datatyper
+
+Skapa en Blank Query och klistra in hela detta i Advanced Editor:
+
+let
+    // ============================================================
+    // QDIP - IPT Upcoming Current
+    // Source: SharePoint current-state mirror
+    // Producer: IPT Upcoming Current Snapshot V2
+    // ============================================================
+    Source =
+        SharePoint.Tables(
+            "https://danaher.sharepoint.com/sites/CEPPQCCoordinatorIPT",
+            [ApiVersion = 15]
+        ),
+    UpcomingList =
+        Source{
+            [
+                Id = "5fdb909c-fadb-42c7-8cf6-0407f046214c"
+            ]
+        }[Items],
+    KeepColumns =
+        Table.SelectColumns(
+            UpcomingList,
+            {
+                "Title",
+                "field_1",
+                "field_2",
+                "field_3",
+                "field_4",
+                "field_5",
+                "field_6",
+                "field_9",
+                "field_10",
+                "field_13",
+                "field_15",
+                "field_22",
+                "field_23",
+                "field_24",
+                "field_25",
+                "field_26",
+                "field_28",
+                "field_29",
+                "field_30",
+                "field_31",
+                "field_32",
+                "field_34",
+                "field_35",
+                "field_36",
+                "field_37",
+                "field_39",
+                "field_40",
+                "field_41"
+            },
+            MissingField.UseNull
+        ),
+    RenameColumns =
+        Table.RenameColumns(
+            KeepColumns,
+            {
+                {"Title", "LotKey"},
+                {"field_1", "OrderNumber"},
+                {"field_2", "FgBatch"},
+                {"field_3", "MaterialNumber"},
+                {"field_4", "LspNumber"},
+                {"field_5", "CurrentRobal"},
+                {"field_6", "CurrentRobalSource"},
+                {"field_9", "PlannedStart"},
+                {"field_10", "PlannedFinish"},
+                {"field_13", "MESLotCreatedAt"},
+                {"field_15", "UpcomingStage"},
+                {"field_22", "CartridgeQuantity"},
+                {"field_23", "CartridgeQtyStatus"},
+                {"field_24", "SampleReagentCount"},
+                {"field_25", "SampleReagentPNs"},
+                {"field_26", "SampleReagentLots"},
+                {"field_28", "SampleReagentCepheidIDs"},
+                {"field_29", "SampleReagentExpiries"},
+                {"field_30", "SampleReagentStatus"},
+                {"field_31", "SampleReagentAllocationStatus"},
+                {"field_32", "SampleReagentDetails"},
+                {"field_34", "KundSrPN"},
+                {"field_35", "OBRRuleStatus"},
+                {"field_36", "OBRRequired"},
+                {"field_37", "OBRFolderSuffix"},
+                {"field_39", "SourceRefreshedAtUTC"},
+                {"field_40", "SyncRunID"},
+                {"field_41", "SnapshotSyncedAtUTC"}
+            },
+            MissingField.Ignore
+        ),
+    SetTypes =
+        Table.TransformColumnTypes(
+            RenameColumns,
+            {
+                {"LotKey", type text},
+                {"OrderNumber", type text},
+                {"FgBatch", type text},
+                {"MaterialNumber", type text},
+                {"LspNumber", type text},
+                {"CurrentRobal", type text},
+                {"CurrentRobalSource", type text},
+                {"PlannedStart", type datetime},
+                {"PlannedFinish", type datetime},
+                {"MESLotCreatedAt", type datetime},
+                {"UpcomingStage", type text},
+                {"CartridgeQuantity", Int64.Type},
+                {"CartridgeQtyStatus", type text},
+                {"SampleReagentCount", Int64.Type},
+                {"SampleReagentPNs", type text},
+                {"SampleReagentLots", type text},
+                {"SampleReagentCepheidIDs", type text},
+                {"SampleReagentExpiries", type text},
+                {"SampleReagentStatus", type text},
+                {"SampleReagentAllocationStatus", type text},
+                {"SampleReagentDetails", type text},
+                {"KundSrPN", type text},
+                {"OBRRuleStatus", type text},
+                {"OBRRequired", type logical},
+                {"OBRFolderSuffix", type text},
+                {"SourceRefreshedAtUTC", type datetime},
+                {"SyncRunID", type text},
+                {"SnapshotSyncedAtUTC", type datetime}
+            }
+        ),
+    RemoveBlankLotKeys =
+        Table.SelectRows(
+            SetTypes,
+            each [LotKey] <> null and Text.Trim([LotKey]) <> ""
+        )
+in
+    RemoveBlankLotKeys
+
+Jag hade döpt queryn till:
+
+IPT Upcoming Current
+
+Första testet efter Close & Apply: lägg bara en Table visual med:
+
+LotKey
+MaterialNumber
+CurrentRobal
+UpcomingStage
+CartridgeQuantity
+SnapshotSyncedAtUTC
+
+Då ser vi direkt om SharePoint → QDIP PBI fungerar.
+
+En sak: OBRRequired finns med eftersom fältet existerar, men enligt vår validering ska du inte använda det som auktoritativt ännu. OBRRuleStatus och OBRFolderSuffix är de säkra OBR-fälten.
