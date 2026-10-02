@@ -1,1 +1,20 @@
+let
+    Source =
+        SharePoint.Tables(
+            "https://danaher.sharepoint.com/sites/CEPPQCCoordinatorIPT",
+            [ApiVersion = 15]
+        ),
 
+    MatchingList =
+        Table.SelectRows(
+            Source,
+            each
+                [Title] = "IPT_UpcomingCurrent"
+                or [Name] = "IPT_UpcomingCurrent"
+        ),
+
+    Data =
+        MatchingList{0}[Items]
+
+in
+    Data
