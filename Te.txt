@@ -1,19 +1,1 @@
-let
-    Source =
-        SharePoint.Tables(
-            "https://danaher.sharepoint.com/sites/CEPPQCCoordinatorIPT",
-            [
-                Implementation = "2.0",
-                ViewMode = "All"
-            ]
-        ),
 
-    CurrentList =
-        Source{
-            [
-                Id = "5fdb909c-fadb-42c7-8cf6-0407f046214c"
-            ]
-        }[Items]
-
-in
-    CurrentList
