@@ -1,0 +1,300 @@
+Ja — nu har jag kontrollerat din riktiga Power Apps-kod i GitHub. Min tidigare version var fel på två viktiga punkter.
+
+I capstere/IPTCMPL/01_PowerApps/IPT - Dashboard/scrDashboard.txt använder du full Code View med Screens: → Children: → Control: → Properties:. Och SQL-källorna refereras direkt som exempelvis IPTBagTested och IPTApp_ErrorsBagTested — inte som [@'[dbo].[IPTBagTested]'].
+
+Du använder också English Power Fx: , inuti funktioner och ; mellan statements.
+
+Gör så här
+
+Lägg först till de 15 SQL-tabellerna som Data Sources i appen. Skapa sedan en blank screen, öppna Code View, markera allt och ersätt med detta:
+
+Screens:
+  scrIPTDataInspector:
+    Properties:
+      Fill: =RGBA(248, 249, 250, 1)
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+    Children:
+      - lblInspectorTitle:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Height: =42
+            Size: =24
+            Text: ="IPTData Inspector"
+            Width: =500
+            X: =24
+            Y: =20
+      - lblInspectorInfo:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(90, 90, 90, 1)
+            Font: =Font.'Open Sans'
+            Height: =40
+            Size: =11
+            Text: ="Extracts 3 sample rows from selected sevmmetrics / IPTData tables. JSON exposes the available column names automatically."
+            Width: =1100
+            X: =24
+            Y: =64
+      - btnExtractIPTData:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Semibold
+            Height: =44
+            HoverFill: =ColorFade(Self.Fill, -20%)
+            OnSelect: |-
+              =Set(
+                  varIPTExport,
+                  "IPTDATA TABLE INSPECTION" & Char(10) &
+                  "Generated: " & Text(Now(), "yyyy-mm-dd HH:mm:ss") & Char(10) &
+                  "Rows per table: 3" & Char(10) &
+                  Char(10) &
+                  "========================================" & Char(10) &
+                  "Snowflake_MES_DATA" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(Snowflake_MES_DATA, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading Snowflake_MES_DATA"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "SNOWFLAKE_MES_OC_MASTER" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(SNOWFLAKE_MES_OC_MASTER, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading SNOWFLAKE_MES_OC_MASTER"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "Snowflake_MES_OCDATA" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(Snowflake_MES_OCDATA, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading Snowflake_MES_OCDATA"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPTApp_OCSamplingPoints" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPTApp_OCSamplingPoints, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPTApp_OCSamplingPoints"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPTApp_OCChange" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPTApp_OCChange, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPTApp_OCChange"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPTApp_AppOrderData" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPTApp_AppOrderData, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPTApp_AppOrderData"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPTApp_AppOrderData_History" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPTApp_AppOrderData_History, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPTApp_AppOrderData_History"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPTApp_SAPProdOrd" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPTApp_SAPProdOrd, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPTApp_SAPProdOrd"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "SAPProdOrd" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(SAPProdOrd, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading SAPProdOrd"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "WeeklyDashboard" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(WeeklyDashboard, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading WeeklyDashboard"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPT_PerformanceReview" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPT_PerformanceReview, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPT_PerformanceReview"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPT_PQPerformance" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPT_PQPerformance, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPT_PQPerformance"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPTBagTested" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPTBagTested, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPTBagTested"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPTReplicatesTested" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPTReplicatesTested, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPTReplicatesTested"
+                  ) &
+                  Char(10) & Char(10) &
+                  "========================================" & Char(10) &
+                  "IPTApp_ReportedErrors" & Char(10) &
+                  "========================================" & Char(10) &
+                  IfError(
+                      JSON(
+                          FirstN(IPTApp_ReportedErrors, 3),
+                          JSONFormat.IndentFour &
+                          JSONFormat.IgnoreBinaryData &
+                          JSONFormat.IgnoreUnsupportedTypes
+                      ),
+                      "ERROR reading IPTApp_ReportedErrors"
+                  )
+              );
+              Reset(txtIPTDataOutput)
+            Size: =12
+            Text: ="EXTRACT TABLE DATA"
+            Width: =220
+            X: =24
+            Y: =112
+      - lblOutputHelp:
+          Control: Label@2.5.1
+          Properties:
+            Color: =RGBA(90, 90, 90, 1)
+            Font: =Font.'Open Sans'
+            Height: =32
+            Size: =10
+            Text: ="Click the button, then select all text below and copy it back to ChatGPT."
+            Width: =700
+            X: =264
+            Y: =118
+      - txtIPTDataOutput:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            BorderColor: =RGBA(200, 200, 200, 1)
+            Default: =varIPTExport
+            Font: =Font.'Courier New'
+            Height: =550
+            HintText: ="Press EXTRACT TABLE DATA..."
+            Mode: =TextMode.MultiLine
+            Size: =10
+            Width: =1318
+            X: =24
+            Y: =176
+
+Det här matchar nu hur du faktiskt byggt Power Apps tidigare.
+
+Och en annan viktig korrigering från mitt förra svar:
+
+Refresh(IPTBagTested)
+FirstN(IPTBagTested, 3)
+
+är rätt mönster för dina SQL-datakällor, eftersom exakt det mönstret redan används i din scrDashboard.txt:
+
+Concurrent(
+    Refresh([@'Cepheid | Production orders']),
+    Refresh(IPTBagTested),
+    Refresh(IPTApp_ErrorsBagTested)
+);
+
+Så inga [dbo]-referenser.
+
+När detta fungerar kan vi göra nästa version betydligt bättre: en riktig IPTData Explorer där du väljer tabell och extraherar den individuellt, i stället för att hårdkoda allt i en jättesträng.
