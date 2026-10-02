@@ -1,19 +1,1 @@
-För din lilla query fick jag detta error:
-
-Expression.Error: The field 'Name' of the record wasn't found.
-Details:
-    Id=01ce2a17-09e8-4256-b9f3-bd7fb263e562
-    Title=19:4add9856b0af464c861e1b46936ef11b@thread.tacv2_wiki
-    Items=[Table]
-
-
-
-För din stora query fick jag detta error:
-
-DataSource.Error: We couldn't parse OData response result.  Error: A type named 'SP.Data.IPT_x005f_UpcomingCurrentListItem' could not be resolved by the model. When a model is available, each type name must resolve to a valid type.
-Details:
-    DataSourceKind=SharePoint
-    DataSourcePath=https://danaher.sharepoint.com/sites/CEPPQCCoordinatorIPT
-    DataSourceKind.2=SharePoint
-    DataSourcePath.2=https://danaher.sharepoint.com/sites/CEPPQCCoordinatorIPT/_api/Web/Lists(guid'5fdb909c-fadb-42c7-8cf6-0407f046214c')/Items
 
